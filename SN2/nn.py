@@ -6,26 +6,33 @@ import time
 np.set_printoptions(threshold=sys.maxsize)
 np.set_printoptions(linewidth=np.inf)
 class Network:
-    def __init__(self, selectedFile="small-7x7.csv", neurons=7*7, noise=0.1, method="hebb", asyncParm = 0, threshold = 0):
+    def __init__(self, selectedFile="small-7x7.csv", noise=0.1, method="hebb", asyncParm = 0, threshold = 0):
         self.file = selectedFile
-        self.neurons = neurons
+        #self.neurons = neurons
         self.noise = noise
         self.method = method
         self.threshold = threshold # default 0
         self.weights = []
         self.asyncParm = asyncParm
         self.maxIterations = 2000
+        self.asyncNumOfIterations = 40
     def trainNetwork(self):
         trainData = np.genfromtxt(self.file, delimiter=',')
+        self.neurons = trainData.shape[1]
         self.weights = np.zeros((self.neurons, self.neurons))
         if(self.method == "hebb"):
-            for i in range(self.neurons):
-                for j in range(self.neurons):
-                    for u in range(len(trainData)):
+            for u in range(len(trainData)):
+                for i in range(self.neurons):
+                    for j in range(self.neurons):
                         self.weights[i][j] += trainData[u][i]*trainData[u][j]
                     self.weights[i][j] = self.weights[i][j]/len(trainData)
             self.weights = self.weights - np.diag(np.diag(self.weights))
-        #else:
+        else:
+            for u in range(len(trainData)):
+                for i in range(self.neurons):
+                    for j in range(self.neurons):
+                        self.weights[i][j] = self.weights[i][j] + (1/len(trainData))*trainData[u][j]*(trainData[u][i]-self.weights[i][j]*trainData[u][j])
+            self.weights = self.weights - np.diag(np.diag(self.weights))
             
 
     def RunSingleTest(self, singleInput):
@@ -52,14 +59,15 @@ class Network:
                 energy = energy_new
         else:
             for it in range(self.maxIterations):
-                i = np.random.randint(0, self.neurons) 
-                calc = 0
-                for j in range(len(s)):
-                    calc += self.weights[i][j]*s[j]
-                if(calc >= self.threshold):
-                    s[i] = 1
-                else:
-                    s[i] = -1
+                for iterator2 in range(self.asyncNumOfIterations):
+                    i = np.random.randint(0, self.neurons) 
+                    calc = 0
+                    for j in range(len(s)):
+                        calc += self.weights[i][j]*s[j]
+                    if(calc >= self.threshold):
+                        s[i] = 1
+                    else:
+                        s[i] = -1
                 energy_new = self.calculateEnergy(s)
                 if(energy == energy_new): # covereged
                     print(1.0)
@@ -89,7 +97,7 @@ class Network:
             for j in range(self.neurons):
                 energy += self.weights[i][j]*s[i]*s[j]
         energy = energy * (-0.5)
-        for i in range(neurons):
+        for i in range(self.neurons):
             energy += s[i]*self.threshold
         return energy
 
@@ -102,17 +110,15 @@ debug = 0
 
 if(debug == 0):
     selectedFile = sys.argv[1]
-    neurons = int(sys.argv[2])
-    noise = float(sys.argv[3])
-    method = sys.argv[4]
-    asyncParm = int(sys.argv[5])
+    noise = float(sys.argv[2])
+    method = sys.argv[3]
+    asyncParm = int(sys.argv[4])
 else:
     selectedFile = pathname = os.path.dirname(sys.argv[0]) + "/data/letters-14x20.csv"
-    neurons = 14*20
     noise = 0.5
     method = "hebb"
     asyncParm = 0
 threshold = 0
-myNetwork = Network(selectedFile, neurons, noise, method, asyncParm, threshold)
+myNetwork = Network(selectedFile, noise, method, asyncParm, threshold)
 myNetwork.trainNetwork()
 myNetwork.testNetwork()

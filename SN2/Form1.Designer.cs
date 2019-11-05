@@ -38,6 +38,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.AsyncCheckBox = new System.Windows.Forms.CheckBox();
             this.OriginalPictureBox = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoiseValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OriginalPictureBox)).BeginInit();
@@ -45,7 +47,7 @@
             // 
             // MainPictureBox
             // 
-            this.MainPictureBox.Location = new System.Drawing.Point(12, 12);
+            this.MainPictureBox.Location = new System.Drawing.Point(12, 59);
             this.MainPictureBox.Name = "MainPictureBox";
             this.MainPictureBox.Size = new System.Drawing.Size(484, 299);
             this.MainPictureBox.TabIndex = 0;
@@ -130,17 +132,37 @@
             // 
             // OriginalPictureBox
             // 
-            this.OriginalPictureBox.Location = new System.Drawing.Point(521, 12);
+            this.OriginalPictureBox.Location = new System.Drawing.Point(522, 59);
             this.OriginalPictureBox.Name = "OriginalPictureBox";
             this.OriginalPictureBox.Size = new System.Drawing.Size(484, 299);
             this.OriginalPictureBox.TabIndex = 9;
             this.OriginalPictureBox.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Testing image";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(518, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 20);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Reference image";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1830, 346);
+            this.ClientSize = new System.Drawing.Size(1389, 370);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.OriginalPictureBox);
             this.Controls.Add(this.AsyncCheckBox);
             this.Controls.Add(this.label3);
@@ -173,6 +195,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox AsyncCheckBox;
         private System.Windows.Forms.PictureBox OriginalPictureBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -81,10 +81,8 @@
     <None Include="data\letters-14x20.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="data\letters-abc-8x12.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="data\OCRA-12x30-cut.csv">
+    <None Include="data\lettersabc-8x12.csv" />
+    <None Include="data\OCRA-12x30.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="data\small-7x7.csv">

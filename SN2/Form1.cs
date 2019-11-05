@@ -29,7 +29,7 @@ namespace SN2
             y = Int32.Parse(resolution[1]);
             int asyncParm = AsyncCheckBox.Checked ? 1 : 0;
             var cmd = "-u nn.py";
-            var args = mydir + (string)FileComboBox.SelectedItem + " " + x*y + " " + (double)NoiseValue.Value/100.0 + " " + method + " " + asyncParm;
+            var args = mydir + (string)FileComboBox.SelectedItem + " " + (double)NoiseValue.Value/100.0 + " " + method + " " + asyncParm;
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
