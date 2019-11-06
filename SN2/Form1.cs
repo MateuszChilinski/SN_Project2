@@ -34,7 +34,7 @@ namespace SN2
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "python.exe",
+                    FileName = "C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe",
                     Arguments = cmd + " " + args,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,

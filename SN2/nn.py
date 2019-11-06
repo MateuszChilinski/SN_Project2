@@ -22,6 +22,7 @@ class Network:
         self.weights = np.zeros((self.neurons, self.neurons))
         if(self.method == "hebb"):
             for u in range(len(trainData)):
+                print(str(u))
                 for i in range(self.neurons):
                     for j in range(self.neurons):
                         self.weights[i][j] += trainData[u][i]*trainData[u][j]
@@ -29,6 +30,7 @@ class Network:
             self.weights = self.weights - np.diag(np.diag(self.weights))
         else:
             for u in range(len(trainData)):
+                print(str(u))
                 for i in range(self.neurons):
                     for j in range(self.neurons):
                         self.weights[i][j] = self.weights[i][j] + (1/len(trainData))*trainData[u][j]*(trainData[u][i]-self.weights[i][j]*trainData[u][j])
