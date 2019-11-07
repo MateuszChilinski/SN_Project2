@@ -40,9 +40,12 @@
             this.OriginalPictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoiseValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OriginalPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainPictureBox
@@ -96,7 +99,7 @@
             // MethodLabel
             // 
             this.MethodLabel.AutoSize = true;
-            this.MethodLabel.Location = new System.Drawing.Point(1069, 26);
+            this.MethodLabel.Location = new System.Drawing.Point(1025, 26);
             this.MethodLabel.Name = "MethodLabel";
             this.MethodLabel.Size = new System.Drawing.Size(63, 20);
             this.MethodLabel.TabIndex = 5;
@@ -105,7 +108,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1069, 82);
+            this.label2.Location = new System.Drawing.Point(1025, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 20);
             this.label2.TabIndex = 6;
@@ -114,7 +117,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1069, 130);
+            this.label3.Location = new System.Drawing.Point(1025, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 20);
             this.label3.TabIndex = 7;
@@ -123,7 +126,7 @@
             // AsyncCheckBox
             // 
             this.AsyncCheckBox.AutoSize = true;
-            this.AsyncCheckBox.Location = new System.Drawing.Point(1073, 161);
+            this.AsyncCheckBox.Location = new System.Drawing.Point(1029, 161);
             this.AsyncCheckBox.Name = "AsyncCheckBox";
             this.AsyncCheckBox.Size = new System.Drawing.Size(78, 24);
             this.AsyncCheckBox.TabIndex = 8;
@@ -156,11 +159,29 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Reference image";
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(1186, 202);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(169, 26);
+            this.numericUpDown1.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1027, 204);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(147, 20);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Pattern (0=random)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1389, 370);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.OriginalPictureBox);
@@ -178,6 +199,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoiseValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OriginalPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +219,8 @@
         private System.Windows.Forms.PictureBox OriginalPictureBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label5;
     }
 }
 

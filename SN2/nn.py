@@ -6,10 +6,11 @@ import time
 np.set_printoptions(threshold=sys.maxsize)
 np.set_printoptions(linewidth=np.inf)
 class Network:
-    def __init__(self, selectedFile="small-7x7.csv", noise=0.1, method="hebb", asyncParm = 0, threshold = 0):
+    def __init__(self, selectedFile="small-7x7.csv", noise=0.1, method="hebb", asyncParm = 0, threshold = 0, pattern = 0):
         self.file = selectedFile
         #self.neurons = neurons
         self.noise = noise
+        self.patatern = pattern
         self.method = method
         self.threshold = threshold # default 0
         self.weights = []
@@ -22,7 +23,6 @@ class Network:
         self.weights = np.zeros((self.neurons, self.neurons))
         if(self.method == "hebb"):
             for u in range(len(trainData)):
-                print(str(u))
                 for i in range(self.neurons):
                     for j in range(self.neurons):
                         self.weights[i][j] += trainData[u][i]*trainData[u][j]
@@ -81,7 +81,9 @@ class Network:
 
     def testNetwork(self):
         testData_all = np.genfromtxt(self.file, delimiter=',')
-        randomPick = random.randint(0, len(testData_all)-1)
+        randomPick = pattern
+        if(pattern == 0):
+            randomPick = random.randint(0, len(testData_all)-1)
         testData = np.copy(testData_all[randomPick])
         print(testData)
         indices = np.random.choice(np.arange(testData.size), replace=False,
@@ -115,12 +117,14 @@ if(debug == 0):
     noise = float(sys.argv[2])
     method = sys.argv[3]
     asyncParm = int(sys.argv[4])
+    pattern = int(sys.argv[5])
 else:
     selectedFile = pathname = os.path.dirname(sys.argv[0]) + "/data/letters-14x20.csv"
     noise = 0.5
     method = "hebb"
     asyncParm = 0
+    pattern = 0
 threshold = 0
-myNetwork = Network(selectedFile, noise, method, asyncParm, threshold)
+myNetwork = Network(selectedFile, noise, method, asyncParm, threshold, pattern)
 myNetwork.trainNetwork()
 myNetwork.testNetwork()
