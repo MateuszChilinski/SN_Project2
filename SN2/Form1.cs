@@ -57,10 +57,7 @@ namespace SN2
             string data = e.Data.ToString();
             if(data.Substring(0,1) == "[")
             {
-                int minus = 1;
-                if(data.Substring(0, 2) == "[-")
-                    minus = 0;
-                data = data.Substring(1+ minus, data.Length - (2+ minus)).Replace("  ", " ").Replace(".", "");
+                data = data.Replace("  ", " ").Replace(".", "").Replace("[ ", "").Replace("[", "").Replace(" ]", "").Replace("]", "");
                 var numbers = data.Split(' ');
                 int[] arr = Array.ConvertAll(numbers, s => int.Parse(s));
                 for (int i = 0; i < arr.Length; i++)

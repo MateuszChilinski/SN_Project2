@@ -70,11 +70,6 @@
             this.NoiseValue.Name = "NoiseValue";
             this.NoiseValue.Size = new System.Drawing.Size(169, 26);
             this.NoiseValue.TabIndex = 2;
-            this.NoiseValue.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
             // 
             // StartButton
             // 
